@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Unit 12.1 – Fractions of Numbers | Grade 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+/* ─── VARIABLES ─────────────────────────────────────────────── */
+:root {
+  --nav-w: 86px;
+  --c-bg: #f0f4ff;
+  --c-sidebar: #1a2a6c;
+  --c-sidebar2: #22357a;
+  --c-accent: #ff6b35;
+  --c-teal: #00b4a2;
+  --c-green: #22c55e;
+  --c-red: #ef4444;
+  --c-yellow: #fbbf24;
+  --c-purple: #8b5cf6;
+  --c-pink: #ec4899;
+  --c-blue: #3b82f6;
+  --c-card: #ffffff;
+  --c-text: #1e293b;
+  --c-muted: #64748b;
+  --shadow: 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.07);
+  --radius: 18px;
+  --radius-sm: 12px;
+}
+
+/* ─── RESET & BASE ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; height: 100%; height: 100dvh; }
+body {
+  font-family: 'Nunito', sans-serif;
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  background: var(--c-bg);
+  color: var(--c-text);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+button, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  cursor: pointer;
+  border: none;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ─── SIDEBAR ────────────────────────────────────────────────── */
+#sidebar {
+  width: var(--nav-w);
+  background: linear-gradient(180deg, var(--c-sidebar) 0%, var(--c-sidebar2) 100%);
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0 20px;
+  gap: 4px;
+  box-shadow: 3px 0 16px rgba(0,0,0,0.18);
+}
+.sidebar-title {
+  font-family: 'Fredoka One', cursive;
+  color: rgba(255,255,255,0.55);
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 8px;
+  padding: 0 4px;
+  text-transform: uppercase;
+}
+.nav-item { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.nav-btn {
+  width: 68px;
+  min-height: 68px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+  padding: 6px 4px;
+  transition: all .22s ease;
+  border: 2px solid transparent;
+  line-height: 1.2;
+}
+.nav-btn:hover { background: rgba(255,255,255,0.14); color: #fff; }
+.nav-btn.active {
+  background: var(--c-accent);
+  color: #fff;
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 4px 14px rgba(255,107,53,0.5);
+}
+.nav-icon { font-size: 22px; line-height: 1; }
+.progress-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  margin: 3px auto 6px;
+  transition: background .3s;
+}
+.progress-dot.done { background: var(--c-green); box-shadow: 0 0 6px var(--c-green); }
+
+/* ─── MAIN ───────────────────────────────────────────────────── */
+#main {
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  scroll-behavior: smooth;
+  padding: 24px 24px 0;
+  padding-bottom: calc(200px + env(safe-area-inset-bottom, 0px));
+}
+
+/* ─── SECTIONS ───────────────────────────────────────────────── */
+.section-page { display: none; }
+.section-page.active { display: block; animation: fadeIn .35s ease; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  25%     { transform: translateX(-6px); }
+  75%     { transform: translateX(6px); }
+}
+@keyframes pop {
+  0%  { transform: scale(1); }
+  50% { transform: scale(1.12); }
+  100%{ transform: scale(1); }
+}
+
+/* ─── PAGE HEADER ────────────────────────────────────────────── */
+.page-header {
+  background: linear-gradient(135deg, var(--c-sidebar) 0%, #2d4ab0 100%);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.page-header .header-icon { font-size: 42px; }
+.page-header h1 { font-family: 'Fredoka One', cursive; font-size: 26px; line-height: 1.1; }
+.page-header p { font-size: 13px; opacity: 0.85; margin-top: 4px; }
+.unit-badge {
+  background: var(--c-accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 20px;
+  padding: 3px 10px;
+  letter-spacing: .5px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+/* ─── CARD ───────────────────────────────────────────────────── */
+.card {
+  background: var(--c-card);
+  border-radius: var(--radius);
+  padding: 22px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
+}
+.card-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 20px;
+  color: var(--c-sidebar);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.q-label {
+  background: var(--c-accent);
+  color: #fff;
+  font-family: 'Fredoka One', cursive;
+  font-size: 14px;
+  border-radius: 50%;
+  width: 32px; height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.q-text { font-size: 16px; font-weight: 600; color: var(--c-text); line-height: 1.5; margin-bottom: 14px; }
+.sub-q { font-size: 15px; font-weight: 700; margin: 10px 0 6px; color: var(--c-sidebar); }
+
+/* ─── ANSWER INPUT ───────────────────────────────────────────── */
+.ans-input {
+  width: 80px; height: 48px;
+  border: 2.5px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
+  color: var(--c-text);
+  background: #f8fafc;
+  transition: border-color .2s, background .2s;
+  outline: none;
+}
+.ans-input:focus { border-color: var(--c-blue); background: #eff6ff; }
+.ans-input.correct { border-color: var(--c-green); background: #f0fdf4; color: var(--c-green); }
+.ans-input.incorrect { border-color: var(--c-red); background: #fef2f2; color: var(--c-red); animation: shake .3s ease; }
+.ans-input[readonly] { background: #f0fdf4; border-color: var(--c-green); color: var(--c-green); cursor: default; }
+
+/* ─── BUTTONS ────────────────────────────────────────────────── */
+.btn {
+  min-height: 48px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 800;
+  padding: 10px 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: all .18s ease;
+}
+.btn-primary {
+  background: var(--c-blue);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(59,130,246,0.35);
+}
+.btn-primary:hover { background: #2563eb; transform: translateY(-1px); }
+.btn-success {
+  background: var(--c-green);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(34,197,94,0.35);
+}
+.btn-reset {
+  background: #f1f5f9;
+  color: var(--c-muted);
+  border: 2px solid #e2e8f0;
+}
+.btn-reset:hover { background: #e2e8f0; }
+.btn-check {
+  background: var(--c-teal);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,180,162,0.35);
+}
+.btn-check:hover { background: #009988; transform: translateY(-1px); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+
+/* ─── TOAST ──────────────────────────────────────────────────── */
+#toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #1a2340;
+  color: #fff;
+  border-radius: 50px;
+  padding: 12px 28px;
+  font-size: 15px;
+  font-weight: 700;
+  z-index: 9999;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+  pointer-events: none;
+  white-space: nowrap;
+}
+#toast.show { transform: translateX(-50%) translateY(0); }
+#toast.toast-correct { background: #15803d; }
+#toast.toast-wrong   { background: #b91c1c; }
+#toast.toast-info    { background: #1d4ed8; }
+
+/* ─── VOCAB CHIPS ─────────────────────────────────────────────── */
+.vocab-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.vocab-chip {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border: 2px solid #fbbf24;
+  border-radius: 50px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #92400e;
+}
+
+/* ─── OBJECTIVES ─────────────────────────────────────────────── */
+.obj-list { list-style: none; }
+.obj-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 0;
+  border-bottom: 1px dashed #e2e8f0;
+  color: var(--c-text);
+}
+.obj-list li:last-child { border-bottom: none; }
+.obj-dot {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--c-teal);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ─── FRACTION STRIP ──────────────────────────────────────────── */
+.strip-container {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 12px 0;
+}
+.strip-wrap { position: relative; margin: 10px 0 30px; min-height: 100px; }
+.fraction-strip {
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(90deg, #bfdbfe, #93c5fd);
+  border-radius: 8px;
+  border: 2.5px solid #3b82f6;
+  position: relative;
+  overflow: visible;
+}
+.strip-tick {
+  position: absolute;
+  top: -8px;
+  width: 3px;
+  height: 66px;
+  background: #1e40af;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+.strip-label {
+  position: absolute;
+  top: 58px;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e40af;
+  white-space: nowrap;
+}
+.strip-end-label {
+  position: absolute;
+  bottom: -22px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--c-muted);
+}
+.strip-section-label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  font-weight: 800;
+  color: rgba(30,64,175,0.7);
+  pointer-events: none;
+}
+.mark-arrow {
+  position: absolute;
+  top: -36px;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--c-accent);
+  white-space: nowrap;
+}
+
+/* ─── MARBLE GRID ────────────────────────────────────────────── */
+.marble-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 14px;
+  border: 2px solid #e2e8f0;
+  margin: 12px 0;
+}
+.marble {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px;
+  cursor: pointer;
+  transition: all .2s ease;
+  background: radial-gradient(circle at 35% 35%, #a8edda, #4fd1b5);
+  box-shadow: 2px 3px 8px rgba(0,0,0,0.15);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.marble:hover { transform: scale(1.1); }
+.marble.selected {
+  background: radial-gradient(circle at 35% 35%, #fde68a, #f59e0b);
+  border-color: var(--c-accent);
+  box-shadow: 0 0 12px rgba(245,158,11,0.6);
+  animation: pop .25s ease;
+}
+.marble.ringed {
+  background: radial-gradient(circle at 35% 35%, #fecaca, #ef4444);
+  border-color: var(--c-red);
+}
+
+/* ─── CAR DISPLAY ────────────────────────────────────────────── */
+.car-display {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 14px;
+  border: 2px dashed var(--c-blue);
+  margin: 12px 0;
+  justify-content: center;
+}
+.car-item {
+  width: 64px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 38px;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.15));
+}
+
+/* ─── TABLE ──────────────────────────────────────────────────── */
+.fraction-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 6px;
+  margin: 12px 0;
+}
+.fraction-table th {
+  background: var(--c-sidebar);
+  color: #fff;
+  padding: 10px 8px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 800;
+  text-align: center;
+}
+.fraction-table td {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  padding: 8px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+}
+.fraction-table td.given {
+  background: linear-gradient(135deg,#eff6ff,#dbeafe);
+  border-color: var(--c-blue);
+  color: var(--c-blue);
+}
+.frac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 1;
+  vertical-align: middle;
+}
+.frac .num { border-bottom: 2px solid currentColor; padding-bottom: 1px; }
+.frac .den { padding-top: 1px; }
+
+/* ─── DIVISION EQUATION ──────────────────────────────────────── */
+.div-eq {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  margin: 10px 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+.eq-box {
+  width: 60px; height: 50px;
+  border: 2.5px solid #cbd5e1;
+  border-radius: 10px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 900;
+}
+.eq-op { color: var(--c-muted); font-size: 20px; }
+
+/* ─── PATTERN SEQUENCE ───────────────────────────────────────── */
+.pattern-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  font-size: 17px;
+  font-weight: 700;
+  flex-wrap: wrap;
+}
+.pattern-row.given-row {
+  background: linear-gradient(135deg,#f0fdf4,#dcfce7);
+  border-color: var(--c-green);
+  color: var(--c-text);
+}
+.pattern-row.input-row {
+  background: linear-gradient(135deg,#fffbeb,#fef3c7);
+  border-color: var(--c-yellow);
+}
+.equals-sign { color: var(--c-muted); }
+
+/* ─── WORD PROBLEM CARD ───────────────────────────────────────── */
+.wp-visual {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin: 14px 0;
+  flex-wrap: wrap;
+}
+.wp-emoji { font-size: 56px; filter: drop-shadow(2px 3px 4px rgba(0,0,0,0.1)); }
+.answer-area {
+  background: linear-gradient(135deg,#fffbeb,#fef3c7);
+  border: 2px dashed var(--c-yellow);
+  border-radius: 14px;
+  padding: 16px;
+  margin-top: 14px;
+}
+.answer-label {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--c-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+/* ─── CHOICE BUTTONS ─────────────────────────────────────────── */
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 12px 0;
+}
+.choice-btn {
+  min-height: 60px;
+  border-radius: 14px;
+  font-size: 22px;
+  font-weight: 900;
+  border: 3px solid #e2e8f0;
+  background: #f8fafc;
+  color: var(--c-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.choice-btn:hover { background: #eff6ff; border-color: var(--c-blue); transform: translateY(-2px); }
+.choice-btn.correct-choice { background: #f0fdf4; border-color: var(--c-green); color: var(--c-green); }
+.choice-btn.wrong-choice   { background: #fef2f2; border-color: var(--c-red);   color: var(--c-red);   animation: shake .3s ease; }
+
+/* ─── INFO BOX ───────────────────────────────────────────────── */
+.info-box {
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin: 14px 0;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.info-box.blue  { background: #eff6ff; border: 2px solid #bfdbfe; color: #1e40af; }
+.info-box.teal  { background: #f0fdfa; border: 2px solid #99f6e4; color: #0f766e; }
+.info-box.purple{ background: #faf5ff; border: 2px solid #ddd6fe; color: #5b21b6; }
+.info-box.orange{ background: #fff7ed; border: 2px solid #fed7aa; color: #c2410c; }
+.info-icon { font-size: 24px; flex-shrink: 0; }
+
+/* ─── COMPLETION BANNER ───────────────────────────────────────── */
+.complete-banner {
+  display: none;
+  background: linear-gradient(135deg,#15803d,#16a34a);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  margin-top: 16px;
+  text-align: center;
+  font-family: 'Fredoka One', cursive;
+  font-size: 20px;
+  animation: fadeIn .4s ease;
+}
+.complete-banner.show { display: block; }
+
+/* ─── SCORE BADGE ────────────────────────────────────────────── */
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--c-sidebar);
+  color: #fff;
+  border-radius: 50px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 800;
+  margin-left: auto;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  :root { --nav-w: 64px; }
+  #main { padding: 14px 14px 0; padding-bottom: calc(200px + env(safe-area-inset-bottom,0px)); }
+  .nav-btn { width: 52px; min-height: 52px; font-size: 9px; }
+  .nav-icon { font-size: 18px; }
+  .page-header h1 { font-size: 20px; }
+  .choice-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── SIDEBAR ─────────────────────────────────────────────────── -->
+<nav id="sidebar">
+  <div class="sidebar-title">Unit 12.1</div>
+
+  <div class="nav-item">
+    <button class="nav-btn active" data-section="0" onclick="navigate(0)">
+      <span class="nav-icon">🏠</span>Intro
+    </button>
+    <div class="progress-dot" id="dot-0"></div>
+  </div>
+
+  <div class="nav-item">
+    <button class="nav-btn" data-section="1" onclick="navigate(1)">
+      <span class="nav-icon">📏</span>Strips Q1–2
+    </button>
+    <div class="progress-dot" id="dot-1"></div>
+  </div>
+
+  <div class="nav-item">
+    <button class="nav-btn" data-section="2" onclick="navigate(2)">
+      <span class="nav-icon">🔵</span>Marbles Q3
+    </button>
+    <div class="progress-dot" id="dot-2"></div>
+  </div>
+
+  <div class="nav-item">
+    <button class="nav-btn" data-section="3" onclick="navigate(3)">
+      <span class="nav-icon">🚗</span>Cars Q4
+    </button>
+    <div class="progress-dot" id="dot-3"></div>
+  </div>
+
+  <div class="nav-item">
+    <button class="nav-btn" data-section="4" onclick="navigate(4)">
+      <span class="nav-icon">📊</span>Tables Q5–6
+    </button>
+    <div class="progress-dot" id="dot-4"></div>
+  </div>
+
+  <div class="nav-item">
+    <button class="nav-btn" data-section="5" onclick="navigate(5)">
+      <span class="nav-icon">➗</span>Divide Q7
+    </button>
+    <div class="progress-dot" id="dot-5"></div>
+  </div>
+
+  <div class="nav-item">
+    <button class="nav-btn" data-section="6" onclick="navigate(6)">
+      <span class="nav-icon">🔢</span>Pattern Q8
+    </button>
+    <div class="progress-dot" id="dot-6"></div>
+  </div>
+
+  <div class="nav-item">
+    <button class="nav-btn" data-section="7" onclick="navigate(7)">
+      <span class="nav-icon">🥪</span>Stories Q9–10
+    </button>
+    <div class="progress-dot" id="dot-7"></div>
+  </div>
+</nav>
+
+<!-- ─── MAIN ─────────────────────────────────────────────────────── -->
+<main id="main">
+
+<!-- ══════════════ SECTION 0: INTRO ══════════════ -->
+<section class="section-page active" id="section-0">
+  <div class="page-header">
+    <div class="header-icon">🍕</div>
+    <div>
+      <div class="unit-badge">Cambridge Primary Math · Grade 3</div>
+      <h1>12.1 Fractions of Numbers</h1>
+      <p>Pages 184–187 · 40 minutes</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🎯 We Are Going To…</div>
+    <ul class="obj-list">
+      <li><span class="obj-dot">1</span>Use fraction strips to find fractions of quantities and numbers</li>
+      <li><span class="obj-dot">2</span>Find fractions of numbers</li>
+      <li><span class="obj-dot">3</span>Solve simple fraction problems</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">💡 Key Idea</div>
+    <div class="info-box blue">
+      <span class="info-icon">📐</span>
+      <div>Finding a fraction is <strong>just like division!</strong><br>
+      Sort the whole into <strong>equal groups</strong> to find the fraction.<br><br>
+      Example: <strong>⅕ of 60 = 60 ÷ 5 = 12</strong></div>
+    </div>
+    <div class="info-box teal" style="margin-top:10px">
+      <span class="info-icon">🔑</span>
+      <div>The <strong>denominator</strong> (bottom number) tells you <strong>how many equal parts</strong> to divide into.<br>
+      The <strong>numerator</strong> (top number) tells you <strong>how many parts</strong> you take.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📖 Key Vocabulary</div>
+    <div class="vocab-grid">
+      <span class="vocab-chip">denominator</span>
+      <span class="vocab-chip">numerator</span>
+      <span class="vocab-chip">unit fraction</span>
+      <span class="vocab-chip">non-unit fraction</span>
+      <span class="vocab-chip">diagram</span>
+      <span class="vocab-chip">dividing line</span>
+    </div>
+    <div class="info-box orange" style="margin-top:14px">
+      <span class="info-icon">💬</span>
+      <div>
+        <strong>Unit fraction</strong> = numerator is 1 (like ½, ⅓, ¼)<br>
+        <strong>Non-unit fraction</strong> = numerator is more than 1 (like ¾, ²⁄₅)
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" onclick="markDone(0); navigate(1)">
+    ▶ Start Lesson
+  </button>
+</section>
+
+<!-- ══════════════ SECTION 1: FRACTION STRIPS Q1–2 ══════════════ -->
+<section class="section-page" id="section-1">
+  <div class="page-header">
+    <div class="header-icon">📏</div>
+    <div>
+      <div class="unit-badge">Questions 1 & 2</div>
+      <h1>Fraction Strips</h1>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="card">
+    <div class="card-title"><span class="q-label">1</span> Marking Thirds on a Strip</div>
+    <div class="q-text">A fraction strip is <strong>15 cm</strong> long. Majak is marking thirds on the strip.</div>
+
+    <div class="strip-container">
+      <div style="font-size:13px;font-weight:700;color:var(--c-muted);margin-bottom:10px;">
+        👇 The strip below is 15 cm. Where should the marks go?
+      </div>
+      <div class="strip-wrap">
+        <div class="fraction-strip" id="strip-q1">
+          <!-- ticks drawn by JS -->
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-q">a) Where should he mark <strong>⅓</strong>?</div>
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      At <input class="ans-input" id="q1a" type="number" placeholder="?" min="1" max="15"> cm
+      <button class="btn btn-check" onclick="checkQ1a()">✔ Check</button>
+    </div>
+
+    <div class="sub-q" style="margin-top:16px">b) Where should he mark <strong>⅔</strong>?</div>
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      At <input class="ans-input" id="q1b" type="number" placeholder="?" min="1" max="15"> cm
+      <button class="btn btn-check" onclick="checkQ1b()">✔ Check</button>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-reset" onclick="resetQ1()">↺ Reset</button>
+    </div>
+    <div class="complete-banner" id="q1-done">🎉 Q1 Complete! 1 third = 5 cm · 2 thirds = 10 cm</div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="card">
+    <div class="card-title"><span class="q-label">2</span> Tenths Strip – How Long?</div>
+    <div class="q-text">A fraction strip has <strong>tenths</strong> marked at: <br>
+      <span style="color:var(--c-blue);font-weight:800;">5 cm, 10 cm, 15 cm, 20 cm, 25 cm, 30 cm, 35 cm, 40 cm and 45 cm</span><br>
+      How long is the <strong>whole</strong> fraction strip?</div>
+
+    <div class="info-box teal">
+      <span class="info-icon">💡</span>
+      <div>The marks show <strong>9 tenths</strong>. If 9 tenths = 45 cm, what is <strong>1 tenth</strong>? Then what is the whole (10 tenths)?</div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px">
+      The whole strip is <input class="ans-input" id="q2" type="number" placeholder="?" min="1" max="100"> cm
+      <button class="btn btn-check" onclick="checkQ2()">✔ Check</button>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-reset" onclick="document.getElementById('q2').value=''; document.getElementById('q2').className='ans-input'; document.getElementById('q2-done').classList.remove('show');">↺ Reset</button>
+    </div>
+    <div class="complete-banner" id="q2-done">🎉 Correct! 45 ÷ 9 = 5 cm per tenth. 5 × 10 = 50 cm total!</div>
+  </div>
+
+  <button class="btn btn-primary" onclick="navigate(2)">Next: Marbles ▶</button>
+</section>
+
+<!-- ══════════════ SECTION 2: MARBLES Q3 ══════════════ -->
+<section class="section-page" id="section-2">
+  <div class="page-header">
+    <div class="header-icon">🔵</div>
+    <div>
+      <div class="unit-badge">Question 3</div>
+      <h1>Marbles!</h1>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="q-label">3a</span> Circle <sup>1</sup>/<sub>10</sub> of the Marbles</div>
+    <div class="q-text">There are <strong>20 marbles</strong>. Tap to select <strong>2 marbles</strong> (that is <sup>1</sup>/<sub>10</sub> of 20).</div>
+    <div class="info-box blue">
+      <span class="info-icon">💡</span>
+      <div>¹⁄₁₀ of 20 = 20 ÷ 10 = <strong>2</strong></div>
+    </div>
+    <div class="marble-grid" id="marble-grid">
+      <!-- 20 marbles drawn by JS -->
+    </div>
+    <div style="font-size:14px;font-weight:700;color:var(--c-muted);margin-top:8px;" id="marble-count">Selected: 0 / 2</div>
+    <button class="btn btn-check" style="margin-top:10px" onclick="checkMarbles()">✔ Check Selection</button>
+    <div class="complete-banner" id="q3a-done">🎉 Correct! You circled ¹⁄₁₀ of the marbles!</div>
+  </div>
+
+  <div class="card" id="q3b-card">
+    <div class="card-title"><span class="q-label">3b</span> What Fraction Are NOT Ringed?</div>
+    <div class="q-text">If <sup>1</sup>/<sub>10</sub> are ringed, what fraction of the marbles are <strong>not</strong> ringed?</div>
+    <div class="choice-grid">
+      <button class="choice-btn" onclick="choiceQ3b(this,'½')"><span class="frac"><span class="num">1</span><span class="den">2</span></span></button>
+      <button class="choice-btn" onclick="choiceQ3b(this,'⁹⁄₁₀')"><span class="frac"><span class="num">9</span><span class="den">10</span></span></button>
+      <button class="choice-btn" onclick="choiceQ3b(this,'⁴⁄₅')"><span class="frac"><span class="num">4</span><span class="den">5</span></span></button>
+      <button class="choice-btn" onclick="choiceQ3b(this,'⁸⁄₁₀ wrong')"><span class="frac"><span class="num">8</span><span class="den">10</span></span></button>
+    </div>
+    <div class="complete-banner" id="q3b-done">🎉 Yes! 10 − 1 = 9 parts, so ⁹⁄₁₀ are NOT ringed!</div>
+  </div>
+
+  <button class="btn btn-primary" onclick="navigate(3)">Next: Cars ▶</button>
+</section>
+
+<!-- ══════════════ SECTION 3: CARS Q4 ══════════════ -->
+<section class="section-page" id="section-3">
+  <div class="page-header">
+    <div class="header-icon">🚗</div>
+    <div>
+      <div class="unit-badge">Question 4</div>
+      <h1>Find the Whole Set!</h1>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="q-label">4</span> Cars – Find the Whole</div>
+    <div class="q-text">Here is <strong>⅓</strong> of a set of cars. How many cars are in the <strong>whole</strong> set?</div>
+
+    <div class="info-box blue">
+      <span class="info-icon">🚗</span>
+      <div>These 4 cars = <strong>1 third</strong> of the whole set.<br>
+      If 1 group has 4 cars, how many groups of 4 are there in the whole?</div>
+    </div>
+
+    <div class="car-display" id="car-group">
+      <div class="car-item">🚗</div>
+      <div class="car-item">🚙</div>
+      <div class="car-item">🏎️</div>
+      <div class="car-item">🚕</div>
+    </div>
+    <div style="font-size:13px;font-weight:700;color:var(--c-muted);text-align:center;margin-top:4px;">
+      ↑ This is ⅓ of the set (4 cars)
+    </div>
+
+    <div style="margin-top:18px;">
+      <div class="q-text">The <strong>whole set</strong> has how many cars?</div>
+      <div class="choice-grid">
+        <button class="choice-btn" onclick="choiceQ4(this, 8)">8 🚗</button>
+        <button class="choice-btn" onclick="choiceQ4(this, 12)">12 🚗</button>
+        <button class="choice-btn" onclick="choiceQ4(this, 6)">6 🚗</button>
+        <button class="choice-btn" onclick="choiceQ4(this, 16)">16 🚗</button>
+      </div>
+    </div>
+
+    <div class="complete-banner" id="q4-done">🎉 Correct! 4 × 3 = 12 cars in the whole set!</div>
+
+    <div id="q4-full-cars" style="display:none;margin-top:12px;">
+      <div style="font-size:13px;font-weight:700;color:var(--c-muted);margin-bottom:6px;">The whole set (12 cars):</div>
+      <div class="car-display">
+        <div class="car-item">🚗</div><div class="car-item">🚙</div><div class="car-item">🏎️</div><div class="car-item">🚕</div>
+        <div class="car-item">🚗</div><div class="car-item">🚙</div><div class="car-item">🏎️</div><div class="car-item">🚕</div>
+        <div class="car-item">🚗</div><div class="car-item">🚙</div><div class="car-item">🏎️</div><div class="car-item">🚕</div>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" onclick="navigate(4)">Next: Tables ▶</button>
+</section>
+
+<!-- ══════════════ SECTION 4: TABLES Q5–6 ══════════════ -->
+<section class="section-page" id="section-4">
+  <div class="page-header">
+    <div class="header-icon">📊</div>
+    <div>
+      <div class="unit-badge">Questions 5 & 6</div>
+      <h1>Fraction Tables</h1>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="card">
+    <div class="card-title"><span class="q-label">5</span> Find Fractions of 20</div>
+    <div class="q-text">Complete the table. Find each fraction of <strong>20</strong>.</div>
+    <div class="info-box blue" style="margin-bottom:12px">
+      <span class="info-icon">💡</span>
+      <div>Divide 20 by the <strong>denominator</strong> (bottom number).<br>Then multiply by the <strong>numerator</strong> (top number).</div>
+    </div>
+    <table class="fraction-table">
+      <thead>
+        <tr>
+          <th>Whole</th>
+          <th><span class="frac"><span class="num">1</span><span class="den">2</span></span></th>
+          <th><span class="frac"><span class="num">1</span><span class="den">3</span></span></th>
+          <th><span class="frac"><span class="num">1</span><span class="den">4</span></span></th>
+          <th><span class="frac"><span class="num">1</span><span class="den">10</span></span></th>
+          <th><span class="frac"><span class="num">3</span><span class="den">4</span></span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-size:20px;font-weight:900;background:linear-gradient(135deg,#1a2a6c,#2d4ab0);color:#fff;border-radius:8px;">20</td>
+          <td><input class="ans-input" id="q5-half" type="number" placeholder="?" style="width:60px;height:42px;font-size:16px" oninput="checkTableInput('q5-half',10,'q5')"></td>
+          <td class="given" style="font-size:20px;font-weight:900;">✗</td>
+          <td><input class="ans-input" id="q5-qtr" type="number" placeholder="?" style="width:60px;height:42px;font-size:16px" oninput="checkTableInput('q5-qtr',5,'q5')"></td>
+          <td><input class="ans-input" id="q5-tenth" type="number" placeholder="?" style="width:60px;height:42px;font-size:16px" oninput="checkTableInput('q5-tenth',2,'q5')"></td>
+          <td><input class="ans-input" id="q5-3qtr" type="number" placeholder="?" style="width:60px;height:42px;font-size:16px" oninput="checkTableInput('q5-3qtr',15,'q5')"></td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="font-size:13px;color:var(--c-muted);font-weight:700;margin-top:4px;">✗ = already done as example</div>
+    <div class="complete-banner" id="q5-done">🎉 Q5 Complete! ½=10, ¼=5, ¹⁄₁₀=2, ¾=15</div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="card">
+    <div class="card-title"><span class="q-label">6</span> Find the Whole!</div>
+    <div class="q-text">In the table below, <strong>⅓ of the whole = 9</strong>. What is the whole number?</div>
+    <div class="info-box purple">
+      <span class="info-icon">🔮</span>
+      <div>If <strong>⅓ = 9</strong>, then the whole = 9 × 3 = <strong>?</strong><br>
+      Once you know the whole, fill in the rest of the table!</div>
+    </div>
+
+    <table class="fraction-table" style="margin-top:14px;">
+      <thead>
+        <tr>
+          <th>Whole</th>
+          <th><span class="frac"><span class="num">1</span><span class="den">2</span></span></th>
+          <th><span class="frac"><span class="num">1</span><span class="den">3</span></span></th>
+          <th><span class="frac"><span class="num">1</span><span class="den">4</span></span></th>
+          <th><span class="frac"><span class="num">1</span><span class="den">10</span></span></th>
+          <th><span class="frac"><span class="num">3</span><span class="den">4</span></span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-size:18px;font-weight:900;color:var(--c-accent)">?</td>
+          <td class="given">✗</td>
+          <td class="given" style="font-size:20px;font-weight:900;color:#15803d;">9</td>
+          <td class="given">✗</td>
+          <td class="given">✗</td>
+          <td class="given">✗</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      <span style="font-size:16px;font-weight:700;">The whole number is:</span>
+      <input class="ans-input" id="q6-ans" type="number" placeholder="?" style="width:90px;">
+      <button class="btn btn-check" onclick="checkQ6()">✔ Check</button>
+    </div>
+    <div class="complete-banner" id="q6-done">🎉 Correct! ⅓ = 9, so the whole = 9 × 3 = 27!</div>
+  </div>
+
+  <button class="btn btn-primary" onclick="navigate(5)">Next: Division ▶</button>
+</section>
+
+<!-- ══════════════ SECTION 5: FRACTION = DIVISION Q7 ══════════════ -->
+<section class="section-page" id="section-5">
+  <div class="page-header">
+    <div class="header-icon">➗</div>
+    <div>
+      <div class="unit-badge">Question 7</div>
+      <h1>Fraction = Division</h1>
+    </div>
+  </div>
+
+  <div class="info-box blue" style="margin-bottom:16px">
+    <span class="info-icon">🔑</span>
+    <div><strong>Finding a fraction IS division!</strong><br>
+    ¼ of 8 = 8 ÷ 4 = 2 &nbsp;✅<br>
+    The denominator is the number you divide by.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="q-label">7</span> Find Each Fraction + Division</div>
+    <div class="q-text">Fill in all the boxes to complete each equation.</div>
+
+    <!-- 7a -->
+    <div class="sub-q">a)</div>
+    <div class="div-eq" id="q7a-row">
+      <span class="frac" style="font-size:18px"><span class="num">1</span><span class="den">4</span></span>
+      <span>of 8 =</span>
+      <input class="ans-input" id="q7a-ans" type="number" placeholder="?" style="width:60px;height:48px" oninput="checkQ7part('a')">
+      <span class="eq-op">,</span>
+      <span>8 ÷</span>
+      <input class="ans-input" id="q7a-div" type="number" placeholder="?" style="width:60px;height:48px" oninput="checkQ7part('a')">
+      <span>=</span>
+      <input class="ans-input" id="q7a-res" type="number" placeholder="?" style="width:60px;height:48px" oninput="checkQ7part('a')">
+    </div>
+
+    <!-- 7b -->
+    <div class="sub-q" style="margin-top:16px">b)</div>
+    <div class="div-eq" id="q7b-row">
+      <span class="frac" style="font-size:18px"><span class="num">1</span><span class="den">2</span></span>
+      <span>of 24 =</span>
+      <input class="ans-input" id="q7b-ans" type="number" placeholder="?" style="width:60px;height:48px" oninput="checkQ7part('b')">
+      <span class="eq-op">,</span>
+      <span>24 ÷</span>
+      <input class="ans-input" id="q7b-div" type="number" placeholder="?" style="width:60px;height:48px" oninput="checkQ7part('b')">
+      <span>=</span>
+      <input class="ans-input" id="q7b-res" type="number" placeholder="?" style="width:60px;height:48px" oninput="checkQ7part('b')">
+    </div>
+
+    <!-- 7c -->
+    <div class="sub-q" style="margin-top:16px">c)</div>
+    <div class="div-eq" id="q7c-row">
+      <span class="frac" style="font-size:18px"><span class="num">1</span><span class="den">4</span></span>
+      <span>of 40 =</span>
+      <input class="ans-input" id="q7c-ans" type="number" placeholder="?" style="width:60px;height:48px" oninput="checkQ7part('c')">
+      <span class="eq-op">,</span>
+      <span>40 ÷</span>
+      <input class="ans-input" id="q7c-div" type="number" placeholder="?" style="width:60px;height:48px" oninput="checkQ7part('c')">
+      <span>=</span>
+      <input class="ans-input" id="q7c-res" type="number" placeholder="?" style="width:60px;height:48px" oninput="checkQ7part('c')">
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-reset" onclick="resetQ7()">↺ Reset</button>
+    </div>
+    <div class="complete-banner" id="q7-done">🎉 Q7 Complete! ¼×8=2÷4=2 · ½×24=12÷2=12 · ¼×40=10÷4=10</div>
+  </div>
+
+  <button class="btn btn-primary" onclick="navigate(6)">Next: Pattern ▶</button>
+</section>
+
+<!-- ══════════════ SECTION 6: PATTERN Q8 ══════════════ -->
+<section class="section-page" id="section-6">
+  <div class="page-header">
+    <div class="header-icon">🔢</div>
+    <div>
+      <div class="unit-badge">Question 8</div>
+      <h1>Pattern Time!</h1>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="q-label">8a</span> Continue the Pattern</div>
+    <div class="q-text">Continue the pattern until you reach a quotient of <strong>10</strong>.</div>
+
+    <div class="pattern-row given-row">
+      <span class="frac"><span class="num">1</span><span class="den">4</span></span>
+      <span>of 4 = 1,</span>
+      <span style="color:var(--c-muted)">4 ÷ 4 = 1</span>
+      <span style="margin-left:auto;font-size:20px">✅</span>
+    </div>
+    <div class="pattern-row given-row">
+      <span class="frac"><span class="num">1</span><span class="den">4</span></span>
+      <span>of 8 = 2,</span>
+      <span style="color:var(--c-muted)">8 ÷ 4 = 2</span>
+      <span style="margin-left:auto;font-size:20px">✅</span>
+    </div>
+
+    <div class="pattern-row input-row" id="p3-row">
+      <span class="frac"><span class="num">1</span><span class="den">4</span></span>
+      <span>of 12 =</span>
+      <input class="ans-input" id="p3" type="number" placeholder="?" style="width:64px;height:48px;font-size:20px" oninput="checkPattern(3,3,'p3','p3-row')">
+    </div>
+    <div class="pattern-row input-row" id="p4-row">
+      <span class="frac"><span class="num">1</span><span class="den">4</span></span>
+      <span>of 16 =</span>
+      <input class="ans-input" id="p4" type="number" placeholder="?" style="width:64px;height:48px;font-size:20px" oninput="checkPattern(4,4,'p4','p4-row')">
+    </div>
+    <div class="pattern-row input-row" id="p5-row">
+      <span class="frac"><span class="num">1</span><span class="den">4</span></span>
+      <span>of 20 =</span>
+      <input class="ans-input" id="p5" type="number" placeholder="?" style="width:64px;height:48px;font-size:20px" oninput="checkPattern(5,5,'p5','p5-row')">
+    </div>
+    <div class="pattern-row input-row" id="p6-row">
+      <span class="frac"><span class="num">1</span><span class="den">4</span></span>
+      <span>of 24 =</span>
+      <input class="ans-input" id="p6" type="number" placeholder="?" style="width:64px;height:48px;font-size:20px" oninput="checkPattern(6,6,'p6','p6-row')">
+    </div>
+    <div class="pattern-row input-row" id="p7-row">
+      <span class="frac"><span class="num">1</span><span class="den">4</span></span>
+      <span>of 28 =</span>
+      <input class="ans-input" id="p7" type="number" placeholder="?" style="width:64px;height:48px;font-size:20px" oninput="checkPattern(7,7,'p7','p7-row')">
+    </div>
+    <div class="pattern-row input-row" id="p8-row">
+      <span class="frac"><span class="num">1</span><span class="den">4</span></span>
+      <span>of 32 =</span>
+      <input class="ans-input" id="p8" type="number" placeholder="?" style="width:64px;height:48px;font-size:20px" oninput="checkPattern(8,8,'p8','p8-row')">
+    </div>
+    <div class="pattern-row input-row" id="p9-row">
+      <span class="frac"><span class="num">1</span><span class="den">4</span></span>
+      <span>of 36 =</span>
+      <input class="ans-input" id="p9" type="number" placeholder="?" style="width:64px;height:48px;font-size:20px" oninput="checkPattern(9,9,'p9','p9-row')">
+    </div>
+    <div class="pattern-row input-row" id="p10-row">
+      <span class="frac"><span class="num">1</span><span class="den">4</span></span>
+      <span>of 40 =</span>
+      <input class="ans-input" id="p10" type="number" placeholder="?" style="width:64px;height:48px;font-size:20px" oninput="checkPattern(10,10,'p10','p10-row')">
+    </div>
+
+    <div class="complete-banner" id="q8a-done">🎉 Pattern complete! Each step goes up by 4. ¼ of 40 = 10! 🌟</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="q-label">8b</span> What Do You Notice?</div>
+    <div class="q-text">What pattern do you see in the answers?</div>
+    <div class="choice-grid" id="q8b-choices">
+      <button class="choice-btn" style="font-size:14px" onclick="choiceQ8b(this,'wrong')">The answers go up by 4 each time</button>
+      <button class="choice-btn" style="font-size:14px" onclick="choiceQ8b(this,'correct')">The answers go up by 1 each time</button>
+      <button class="choice-btn" style="font-size:14px" onclick="choiceQ8b(this,'wrong')">The answers are all even numbers</button>
+      <button class="choice-btn" style="font-size:14px" onclick="choiceQ8b(this,'wrong')">The answers double each time</button>
+    </div>
+    <div class="complete-banner" id="q8b-done">🎉 Yes! 1, 2, 3, 4... the answers go up by 1 because the number goes up by 4 each time!</div>
+  </div>
+
+  <button class="btn btn-primary" onclick="navigate(7)">Next: Word Problems ▶</button>
+</section>
+
+<!-- ══════════════ SECTION 7: WORD PROBLEMS Q9–10 ══════════════ -->
+<section class="section-page" id="section-7">
+  <div class="page-header">
+    <div class="header-icon">🥪</div>
+    <div>
+      <div class="unit-badge">Questions 9 & 10</div>
+      <h1>Word Problems</h1>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="card">
+    <div class="card-title"><span class="q-label">9</span> Sandwiches at a Party!</div>
+    <div class="q-text">At a party, the sandwiches have been cut into <strong>quarters</strong>.<br>
+    <strong>4 people</strong> share <strong>2 sandwiches</strong>.<br>
+    How much does each person get?</div>
+
+    <div class="wp-visual">
+      <div class="wp-emoji">🥪</div>
+      <div class="wp-emoji">🥪</div>
+    </div>
+
+    <div class="info-box teal">
+      <span class="info-icon">💡</span>
+      <div>
+        Each sandwich is cut into <strong>4 quarters</strong>.<br>
+        2 sandwiches = 2 × 4 = <strong>8 quarter pieces</strong>.<br>
+        8 pieces ÷ 4 people = <strong>?</strong> pieces each.
+      </div>
+    </div>
+
+    <div class="answer-area">
+      <div class="answer-label">Each person gets…</div>
+      <div class="choice-grid" id="q9-choices">
+        <button class="choice-btn" onclick="choiceQ9(this,'¼')">¼ of a sandwich</button>
+        <button class="choice-btn" onclick="choiceQ9(this,'½')">½ of a sandwich</button>
+        <button class="choice-btn" onclick="choiceQ9(this,'1')">1 whole sandwich</button>
+        <button class="choice-btn" onclick="choiceQ9(this,'¾')">¾ of a sandwich</button>
+      </div>
+    </div>
+    <div class="complete-banner" id="q9-done">🎉 Correct! 8 quarters ÷ 4 people = 2 quarters each = ½ a sandwich!</div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="card">
+    <div class="card-title"><span class="q-label">10</span> Apples!</div>
+    <div class="q-text">There are <strong>4 apples</strong> in a pack. Roshni takes <strong>one apple</strong>.<br>What fraction of the apples does she take?</div>
+
+    <div class="wp-visual">
+      <div class="wp-emoji">🍎</div>
+      <div class="wp-emoji">🍎</div>
+      <div class="wp-emoji">🍎</div>
+      <div class="wp-emoji">🍎</div>
+    </div>
+
+    <div class="answer-area">
+      <div class="answer-label">Roshni takes…</div>
+      <div class="choice-grid" id="q10-choices">
+        <button class="choice-btn" onclick="choiceQ10(this,'⅓')"><span class="frac"><span class="num">1</span><span class="den">3</span></span></button>
+        <button class="choice-btn" onclick="choiceQ10(this,'¼')"><span class="frac"><span class="num">1</span><span class="den">4</span></span></button>
+        <button class="choice-btn" onclick="choiceQ10(this,'½')"><span class="frac"><span class="num">1</span><span class="den">2</span></span></button>
+        <button class="choice-btn" onclick="choiceQ10(this,'⅕')"><span class="frac"><span class="num">1</span><span class="den">5</span></span></button>
+      </div>
+    </div>
+    <div class="complete-banner" id="q10-done">🎉 Correct! 1 out of 4 apples = ¼ of the apples!</div>
+  </div>
+
+  <!-- Final complete -->
+  <div class="card" id="lesson-end" style="display:none;">
+    <div style="text-align:center;padding:20px;">
+      <div style="font-size:60px;margin-bottom:12px;">🏆</div>
+      <div style="font-family:'Fredoka One',cursive;font-size:28px;color:var(--c-sidebar);margin-bottom:8px;">Lesson Complete!</div>
+      <div style="font-size:16px;color:var(--c-muted);font-weight:600;">
+        You finished all 10 questions on Fractions of Numbers!<br>
+        Great work! 🌟
+      </div>
+      <button class="btn btn-primary" style="margin-top:20px" onclick="navigate(0)">🏠 Back to Start</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  const lessonState = {
+    currentSection: 0,
+    done: new Set(),
+    q5done: { 'q5-half': false, 'q5-qtr': false, 'q5-tenth': false, 'q5-3qtr': false },
+    q7done: { a: false, b: false, c: false },
+    patternDone: { 3:false,4:false,5:false,6:false,7:false,8:false,9:false,10:false },
+    marbleCount: 0
+  };
+
+  // ── TOAST ──────────────────────────────────────────────────────────
+  let toastTimer;
+  window.showToast = function(msg, type='info') {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'show toast-' + type;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.className = '', 2600);
+  };
+
+  // ── NAVIGATION ─────────────────────────────────────────────────────
+  window.navigate = function(idx) {
+    document.querySelectorAll('.section-page').forEach(s => s.classList.remove('active'));
+    document.getElementById('section-' + idx).classList.add('active');
+    document.querySelectorAll('.nav-btn').forEach(b => {
+      b.classList.toggle('active', +b.dataset.section === idx);
+    });
+    document.getElementById('main').scrollTo({ top: 0, behavior: 'smooth' });
+    lessonState.currentSection = idx;
+  };
+
+  window.markDone = function(idx) {
+    lessonState.done.add(idx);
+    const dot = document.getElementById('dot-' + idx);
+    if (dot) dot.classList.add('done');
+  };
+
+  function sectionComplete(idx) {
+    markDone(idx);
+    showToast('✅ Section complete!', 'correct');
+  }
+
+  // ── DRAW FRACTION STRIP Q1 ──────────────────────────────────────────
+  function drawStrip() {
+    const container = document.getElementById('strip-q1');
+    if (!container) return;
+    container.innerHTML = `
+      <svg width="100%" height="90" viewBox="0 0 600 90" preserveAspectRatio="xMidYMid meet" id="strip-svg">
+        <!-- Main bar -->
+        <rect x="20" y="25" width="560" height="36" rx="8" fill="url(#stripGrad)" stroke="#3b82f6" stroke-width="2.5"/>
+        <defs>
+          <linearGradient id="stripGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#bfdbfe"/>
+            <stop offset="100%" stop-color="#93c5fd"/>
+          </linearGradient>
+        </defs>
+        <!-- Cm labels -->
+        <text x="20" y="76" text-anchor="middle" font-size="12" fill="#64748b" font-weight="700">0 cm</text>
+        <text x="580" y="76" text-anchor="middle" font-size="12" fill="#64748b" font-weight="700">15 cm</text>
+
+        <!-- Tick at 1/3 = 5 cm  (187px from left edge) -->
+        <g id="tick-third" opacity="0">
+          <line x1="207" y1="14" x2="207" y2="72" stroke="#1e40af" stroke-width="3" stroke-linecap="round"/>
+          <text x="207" y="10" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="800">⅓</text>
+          <text x="207" y="84" text-anchor="middle" font-size="12" fill="#15803d" font-weight="800">5 cm</text>
+        </g>
+
+        <!-- Tick at 2/3 = 10 cm (393px from left edge) -->
+        <g id="tick-two-thirds" opacity="0">
+          <line x1="393" y1="14" x2="393" y2="72" stroke="#1e40af" stroke-width="3" stroke-linecap="round"/>
+          <text x="393" y="10" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="800">⅔</text>
+          <text x="393" y="84" text-anchor="middle" font-size="12" fill="#15803d" font-weight="800">10 cm</text>
+        </g>
+
+        <!-- Section labels (appear with ticks) -->
+        <text id="lbl-s1" x="114" y="47" text-anchor="middle" font-size="11" fill="rgba(30,64,175,0.5)" font-weight="800" opacity="0">1st third</text>
+        <text id="lbl-s2" x="300" y="47" text-anchor="middle" font-size="11" fill="rgba(30,64,175,0.5)" font-weight="800" opacity="0">2nd third</text>
+        <text id="lbl-s3" x="487" y="47" text-anchor="middle" font-size="11" fill="rgba(30,64,175,0.5)" font-weight="800" opacity="0">3rd third</text>
+      </svg>`;
+  }
+
+  function showStripTick(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.style.transition = 'opacity 0.4s ease';
+      el.setAttribute('opacity','1');
+    }
+  }
+  function showStripLabels() {
+    ['lbl-s1','lbl-s2','lbl-s3'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.setAttribute('opacity','1');
+    });
+  }
+
+  // ── Q1 ─────────────────────────────────────────────────────────────
+  window.checkQ1a = function() {
+    const inp = document.getElementById('q1a');
+    if (parseInt(inp.value) === 5) {
+      inp.className = 'ans-input correct';
+      inp.readOnly = true;
+      showToast('✅ Correct! 15 ÷ 3 = 5 cm', 'correct');
+      showStripTick('tick-third');
+      showStripLabels();
+      checkQ1Complete();
+    } else {
+      inp.className = 'ans-input incorrect';
+      showToast('❌ Try again! 15 ÷ 3 = ?', 'wrong');
+      setTimeout(() => inp.className = 'ans-input', 600);
+    }
+  };
+  window.checkQ1b = function() {
+    const inp = document.getElementById('q1b');
+    if (parseInt(inp.value) === 10) {
+      inp.className = 'ans-input correct';
+      inp.readOnly = true;
+      showToast('✅ Yes! 2 × 5 = 10 cm', 'correct');
+      showStripTick('tick-two-thirds');
+      checkQ1Complete();
+    } else {
+      inp.className = 'ans-input incorrect';
+      showToast('❌ Try again! 2 × (15÷3) = ?', 'wrong');
+      setTimeout(() => inp.className = 'ans-input', 600);
+    }
+  };
+  function checkQ1Complete() {
+    const a = document.getElementById('q1a').readOnly;
+    const b = document.getElementById('q1b').readOnly;
+    if (a && b) {
+      document.getElementById('q1-done').classList.add('show');
+      sectionComplete(1);
+    }
+  }
+  window.resetQ1 = function() {
+    ['q1a','q1b'].forEach(id => {
+      const el = document.getElementById(id);
+      el.value = '';
+      el.className = 'ans-input';
+      el.readOnly = false;
+    });
+    document.getElementById('q1-done').classList.remove('show');
+    drawStrip(); // redraw strip to hide ticks
+  };
+
+  // ── Q2 ─────────────────────────────────────────────────────────────
+  window.checkQ2 = function() {
+    const inp = document.getElementById('q2');
+    if (parseInt(inp.value) === 50) {
+      inp.className = 'ans-input correct';
+      inp.readOnly = true;
+      document.getElementById('q2-done').classList.add('show');
+      showToast('🎉 Correct! 50 cm!', 'correct');
+      sectionComplete(1);
+    } else {
+      inp.className = 'ans-input incorrect';
+      showToast('❌ Hint: 45÷9=5, so whole=5×10=?', 'wrong');
+      setTimeout(() => inp.className = 'ans-input', 600);
+    }
+  };
+
+  // ── Q3 MARBLES ─────────────────────────────────────────────────────
+  function buildMarbles() {
+    const grid = document.getElementById('marble-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    for (let i = 0; i < 20; i++) {
+      const m = document.createElement('div');
+      m.className = 'marble';
+      m.dataset.idx = i;
+      m.innerHTML = '🔵';
+      m.addEventListener('click', toggleMarble);
+      grid.appendChild(m);
+    }
+  }
+  function toggleMarble(e) {
+    const m = e.currentTarget;
+    if (m.classList.contains('selected')) {
+      m.classList.remove('selected');
+      lessonState.marbleCount--;
+    } else {
+      if (lessonState.marbleCount >= 2) {
+        showToast('⚠️ You can only pick 2 marbles!', 'wrong');
+        return;
+      }
+      m.classList.add('selected');
+      lessonState.marbleCount++;
+    }
+    document.getElementById('marble-count').textContent = `Selected: ${lessonState.marbleCount} / 2`;
+  }
+  window.checkMarbles = function() {
+    if (lessonState.marbleCount === 2) {
+      document.querySelectorAll('.marble.selected').forEach(m => m.classList.add('ringed'));
+      document.getElementById('q3a-done').classList.add('show');
+      showToast('🎉 Perfect! ¹⁄₁₀ of 20 = 2 marbles!', 'correct');
+      markDone(2);
+    } else {
+      showToast(`❌ Select exactly 2 marbles! (${lessonState.marbleCount} selected)`, 'wrong');
+    }
+  };
+  window.choiceQ3b = function(btn, val) {
+    document.querySelectorAll('#q3b-card .choice-btn').forEach(b => b.classList.remove('correct-choice','wrong-choice'));
+    if (val === '⁹⁄₁₀') {
+      btn.classList.add('correct-choice');
+      document.getElementById('q3b-done').classList.add('show');
+      showToast('✅ Correct! ⁹⁄₁₀ are not ringed!', 'correct');
+      sectionComplete(2);
+    } else {
+      btn.classList.add('wrong-choice');
+      showToast('❌ Try again! 10 − 1 = 9 parts out of 10', 'wrong');
+    }
+  };
+
+  // ── Q4 CARS ────────────────────────────────────────────────────────
+  window.choiceQ4 = function(btn, val) {
+    document.querySelectorAll('#section-3 .choice-btn').forEach(b => b.classList.remove('correct-choice','wrong-choice'));
+    if (val === 12) {
+      btn.classList.add('correct-choice');
+      document.getElementById('q4-done').classList.add('show');
+      document.getElementById('q4-full-cars').style.display = 'block';
+      showToast('🎉 Yes! 4 × 3 = 12 cars!', 'correct');
+      sectionComplete(3);
+    } else {
+      btn.classList.add('wrong-choice');
+      showToast('❌ Hint: 4 cars = ⅓, so multiply by 3!', 'wrong');
+    }
+  };
+
+  // ── Q5 TABLE ───────────────────────────────────────────────────────
+  const q5answers = { 'q5-half':10, 'q5-qtr':5, 'q5-tenth':2, 'q5-3qtr':15 };
+  window.checkTableInput = function(id, ans, section) {
+    const inp = document.getElementById(id);
+    const val = parseInt(inp.value);
+    if (!isNaN(val)) {
+      if (val === ans) {
+        inp.className = 'ans-input correct';
+        inp.readOnly = true;
+        lessonState.q5done[id] = true;
+        showToast('✅ Correct!', 'correct');
+        if (Object.values(lessonState.q5done).every(Boolean)) {
+          document.getElementById('q5-done').classList.add('show');
+          sectionComplete(4);
+        }
+      } else if (inp.value.length > 0) {
+        inp.className = 'ans-input incorrect';
+        setTimeout(() => inp.className = 'ans-input', 600);
+      }
+    }
+  };
+
+  // ── Q6 WHOLE ───────────────────────────────────────────────────────
+  window.checkQ6 = function() {
+    const inp = document.getElementById('q6-ans');
+    if (parseInt(inp.value) === 27) {
+      inp.className = 'ans-input correct';
+      inp.readOnly = true;
+      document.getElementById('q6-done').classList.add('show');
+      showToast('🎉 27! 9 × 3 = 27 is the whole!', 'correct');
+      sectionComplete(4);
+    } else if (inp.value) {
+      inp.className = 'ans-input incorrect';
+      showToast('❌ Hint: ⅓ = 9, so whole = 9 × 3 = ?', 'wrong');
+      setTimeout(() => inp.className = 'ans-input', 600);
+    }
+  };
+
+  // ── Q7 DIVISION ────────────────────────────────────────────────────
+  const q7data = {
+    a: { ans:2, div:4, res:2 },
+    b: { ans:12, div:2, res:12 },
+    c: { ans:10, div:4, res:10 }
+  };
+  // Track each individual cell completion
+  const q7cells = { 'q7a-ans':false,'q7a-div':false,'q7a-res':false,'q7b-ans':false,'q7b-div':false,'q7b-res':false,'q7c-ans':false,'q7c-div':false,'q7c-res':false };
+
+  window.checkQ7part = function(p) {
+    const d = q7data[p];
+    const fields = ['ans','div','res'];
+    fields.forEach(k => {
+      const el = document.getElementById('q7'+p+'-'+k);
+      if (el.readOnly) return;
+      const val = parseInt(el.value);
+      if (isNaN(val) || el.value === '') return;
+      if (val === d[k]) {
+        el.className = 'ans-input correct';
+        el.readOnly = true;
+        q7cells['q7'+p+'-'+k] = true;
+        showToast('✅ Correct!', 'correct');
+      } else {
+        el.className = 'ans-input incorrect';
+        setTimeout(() => { if (!el.readOnly) el.className = 'ans-input'; }, 600);
+      }
+    });
+    lessonState.q7done[p] = ['ans','div','res'].every(k => q7cells['q7'+p+'-'+k]);
+    if (Object.values(lessonState.q7done).every(Boolean)) {
+      document.getElementById('q7-done').classList.add('show');
+      sectionComplete(5);
+    }
+  };
+  window.resetQ7 = function() {
+    ['a','b','c'].forEach(p => {
+      ['ans','div','res'].forEach(k => {
+        const el = document.getElementById('q7'+p+'-'+k);
+        if (el) { el.value=''; el.className='ans-input'; el.readOnly=false; }
+        q7cells['q7'+p+'-'+k] = false;
+      });
+      lessonState.q7done[p] = false;
+    });
+    document.getElementById('q7-done').classList.remove('show');
+  };
+
+  // ── Q8 PATTERN ─────────────────────────────────────────────────────
+  window.checkPattern = function(step, answer, inputId, rowId) {
+    const inp = document.getElementById(inputId);
+    if (parseInt(inp.value) === answer) {
+      inp.className = 'ans-input correct';
+      inp.readOnly = true;
+      const row = document.getElementById(rowId);
+      if (row) {
+        row.classList.remove('input-row');
+        row.classList.add('given-row');
+        const tick = document.createElement('span');
+        tick.style.marginLeft = 'auto';
+        tick.style.fontSize = '20px';
+        tick.textContent = '✅';
+        row.appendChild(tick);
+      }
+      lessonState.patternDone[step] = true;
+      showToast('✅ ' + answer + ' is correct!', 'correct');
+      if (Object.values(lessonState.patternDone).every(Boolean)) {
+        document.getElementById('q8a-done').classList.add('show');
+        markDone(6);
+      }
+    } else if (inp.value.length > 0 && !isNaN(parseInt(inp.value))) {
+      inp.className = 'ans-input incorrect';
+      setTimeout(() => inp.className = 'ans-input', 600);
+    }
+  };
+  window.choiceQ8b = function(btn, val) {
+    document.querySelectorAll('#q8b-choices .choice-btn').forEach(b => b.classList.remove('correct-choice','wrong-choice'));
+    if (val === 'correct') {
+      btn.classList.add('correct-choice');
+      document.getElementById('q8b-done').classList.add('show');
+      showToast('✅ Yes! The answers count up by 1!', 'correct');
+      sectionComplete(6);
+    } else {
+      btn.classList.add('wrong-choice');
+      showToast('❌ Look at 1, 2, 3, 4... how do they change?', 'wrong');
+    }
+  };
+
+  // ── Q9 SANDWICHES ──────────────────────────────────────────────────
+  window.choiceQ9 = function(btn, val) {
+    document.querySelectorAll('#q9-choices .choice-btn').forEach(b => b.classList.remove('correct-choice','wrong-choice'));
+    if (val === '½') {
+      btn.classList.add('correct-choice');
+      document.getElementById('q9-done').classList.add('show');
+      showToast('🎉 ½ a sandwich each! 8 quarters ÷ 4 = 2 quarters = ½', 'correct');
+      markDone(7);
+    } else {
+      btn.classList.add('wrong-choice');
+      showToast('❌ Count: 2 sandwiches × 4 quarters = 8 pieces ÷ 4 people', 'wrong');
+    }
+  };
+
+  // ── Q10 APPLES ─────────────────────────────────────────────────────
+  window.choiceQ10 = function(btn, val) {
+    document.querySelectorAll('#q10-choices .choice-btn').forEach(b => b.classList.remove('correct-choice','wrong-choice'));
+    if (val === '¼') {
+      btn.classList.add('correct-choice');
+      document.getElementById('q10-done').classList.add('show');
+      document.getElementById('lesson-end').style.display = 'block';
+      showToast('🎉 ¼ of the apples! Lesson complete!', 'correct');
+      sectionComplete(7);
+    } else {
+      btn.classList.add('wrong-choice');
+      showToast('❌ There are 4 apples and she takes 1. That is 1 out of 4!', 'wrong');
+    }
+  };
+
+  // ── INIT ───────────────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', function() {
+    drawStrip();
+    buildMarbles();
+    markDone(0);
+  });
+
+})();
+</script>
+</body>
+</html>
